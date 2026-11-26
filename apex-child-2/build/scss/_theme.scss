@@ -1,0 +1,430 @@
+//
+// APEX Voltage — visual layer
+// --------------------------------------------------
+
+h1, h2, h3, .h1, .h2, .h3 { letter-spacing: -.02em; }
+
+.theme-eyebrow { color: $vt-blue; }
+
+.price, .price .h5, .oldPrice { font-variant-numeric: tabular-nums; }
+
+// Buttons: sentence case, rounded, soft tinted secondary
+.btn-highlight,
+.btn-primary {
+  --bs-btn-bg: #{$vt-blue};
+  --bs-btn-border-color: #{$vt-blue};
+  --bs-btn-hover-bg: #{$vt-blue-dark};
+  --bs-btn-hover-border-color: #{$vt-blue-dark};
+  --bs-btn-active-bg: #{$vt-blue-dark};
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+}
+
+.btn-outline-primary {
+  background: $vt-blue-tint;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-border-color: #{$vt-blue};
+}
+
+// round icon buttons only on product cards (wishlist); the detail page's text buttons keep their width
+.product-card .btn-light {
+  border: 0 !important;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, .12);
+  border-radius: 50% !important;
+  width: 38px !important;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-tag {
+  background: #fff;
+  border: 1px solid $vt-border;
+  border-radius: 50rem;
+  font-weight: 500;
+
+  &:hover {
+    background: $vt-blue-tint !important;
+    border-color: $vt-blue;
+    color: $vt-blue;
+  }
+}
+
+.badge {
+  background: $vt-blue;
+  border-radius: 50rem;
+}
+
+.badge.badge-sale {
+  border-radius: 50rem;
+  background: $vt-deal !important;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: .35em .7em;
+}
+
+.form-control,
+.form-select { border-radius: .75rem; }
+
+// --------------------------------------------------
+// Header: navy announcement bar, sticky white bar, pill search, pill category nav
+// --------------------------------------------------
+.header {
+  box-shadow: 0 1px 0 $vt-border;
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+
+  .header-container {
+    border-bottom: 0;
+    gap: 1.5rem;
+
+    @include media-breakpoint-up(lg) { padding: 14px 0; }
+  }
+
+  .menu-dropdowns .btn {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $vt-surface;
+    margin-left: .5rem;
+    padding: 0;
+
+    svg { width: 22px; height: 22px; }
+
+    &:hover, &.show { background: $vt-blue-tint; }
+
+    .badge {
+      top: -2px;
+      right: -2px;
+      background: $vt-deal;
+      color: #fff;
+      min-width: 20px;
+    }
+  }
+}
+
+.meta {
+  font-size: 13px;
+  background: linear-gradient(90deg, $vt-navy 0%, #1E293B 55%, $vt-violet 130%);
+}
+
+.header .usp-list {
+  font-size: 13px;
+  background: transparent;
+
+  svg { fill: #93C5FD; }
+
+  .list-inline-item { background: transparent; }
+
+  @include media-breakpoint-up(lg) {
+    .list-inline-item { font-size: 13px; }
+  }
+}
+
+.search {
+  flex: 1 1 auto;
+
+  @include media-breakpoint-up(lg) {
+    max-width: 640px;
+    min-width: 420px;
+  }
+
+  &:focus-within { outline: 0; }
+
+  .form-control {
+    border: 1px solid transparent;
+    background: $vt-surface;
+    border-radius: 50rem !important;
+    height: 50px;
+    padding-left: 1.5rem;
+    padding-right: 64px;
+
+    &:focus {
+      background: #fff;
+      border-color: $vt-blue;
+    }
+  }
+
+  .btn {
+    border: 0;
+    top: 5px;
+    bottom: 5px;
+    right: 5px;
+    width: 40px;
+    border-radius: 50% !important;
+    background: $vt-blue;
+    justify-content: center;
+
+    svg { fill: #fff; width: 18px; height: 18px; }
+
+    &:hover {
+      background: $vt-blue-dark;
+
+      svg { fill: #fff; }
+    }
+  }
+}
+
+.vt-navrow {
+  @include media-breakpoint-up(lg) {
+    border-top: 1px solid $vt-border;
+    background: #fff;
+
+    .navbar-nav-mega {
+      gap: .25rem;
+      padding: .5rem 0;
+
+      .nav-link-1 {
+        margin: 0;
+        padding: .45rem 1rem;
+        border-radius: 50rem;
+        font-weight: 500;
+        font-size: .95rem;
+      }
+
+      .nav-item:hover .nav-link-1,
+      .nav-link-1.active {
+        background: $vt-blue-tint;
+        color: $vt-blue;
+      }
+
+      .nav-item.has-subs:hover .nav-link-1::after { background: transparent; }
+
+      .nav-level-2 {
+        top: calc(100% - 2px);
+        border-radius: 0 0 1rem 1rem;
+        box-shadow: 0 24px 40px rgba(15, 23, 42, .12);
+        border-top: 1px solid $vt-border;
+      }
+    }
+  }
+}
+
+.mobile-nav {
+  margin: 0 .5rem .5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, .2);
+
+  .badge { background: $vt-deal; }
+}
+
+// --------------------------------------------------
+// Start page
+// --------------------------------------------------
+.vt-hero {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #E0E7FF 0%, #F5F3FF 50%, #E0F2FE 100%);
+  margin-top: 1.25rem;
+
+  .carousel, img { border-radius: 1.25rem; }
+}
+
+.vt-catstrip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .5rem 0 1rem;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  @include media-breakpoint-up(lg) {
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+
+.vt-cat {
+  flex: 0 0 auto;
+  width: 120px;
+  scroll-snap-align: start;
+  text-align: center;
+  text-decoration: none;
+  color: $vt-ink;
+  font-size: .9rem;
+  font-weight: 500;
+
+  &-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto .6rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .06);
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  &:hover &-img,
+  &:focus &-img {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 3px $vt-blue, $box-shadow;
+  }
+
+  &:hover { color: $vt-blue; }
+}
+
+.vt-panel {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1.5rem 0 1rem;
+
+  @include media-breakpoint-up(lg) { padding: 2rem 0 1.25rem; }
+}
+
+.vt-deals {
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFFFFF 60%);
+
+  h2::after {
+    content: var(--vt-badge, none);
+    margin-left: .75rem;
+    vertical-align: middle;
+    font-family: $font-family-base;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: $vt-deal;
+    padding: .3em .8em;
+    border-radius: 50rem;
+  }
+}
+
+// Feature strip (oxstartusps): white cards
+.usp-list-content {
+  background: transparent;
+  color: $vt-ink;
+  padding: 0;
+
+  .list-inline-item {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin: 0 .5rem !important;
+    font-family: $font-family-base;
+    font-weight: 600;
+    flex-direction: row;
+    gap: .75rem;
+
+    svg {
+      fill: $vt-blue;
+      margin: 0;
+      width: 28px;
+      height: 28px;
+      padding: 10px;
+      box-sizing: content-box;
+      background: $vt-blue-tint;
+      border-radius: 50%;
+    }
+  }
+
+  svg { fill: $vt-blue; }
+}
+
+.brand-card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+// --------------------------------------------------
+// Product cards: white, rounded 16px, lift on hover, round action buttons
+// --------------------------------------------------
+.product-card {
+  border-radius: 1rem !important;
+  background: #fff;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease !important;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+    box-shadow: $box-shadow;
+  }
+
+  .product-img-wrapper {
+    padding: 1rem;
+    background: #fff;
+  }
+
+  .card-title {
+    font-family: $font-family-base;
+    font-weight: 500;
+    font-size: .95rem;
+    line-height: 1.35;
+  }
+
+  .price .h5 {
+    font-size: 1.25rem;
+    color: $vt-ink;
+
+    &.text-danger { color: $vt-deal !important; }
+  }
+
+  .actions .bottom .input-group {
+    background: #fff;
+    border-radius: .75rem;
+    box-shadow: $box-shadow;
+  }
+
+  .badges .badge-sale { background: $vt-deal !important; }
+}
+
+.slider-container > div { padding: 6px 0 10px; }
+
+.slider-nav .btn {
+  width: 48px !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  box-shadow: $box-shadow !important;
+
+  &:hover { background: $vt-blue !important; }
+}
+
+.card { border-radius: 1rem; }
+
+// --------------------------------------------------
+// Footer: navy, rounded top
+// --------------------------------------------------
+.footer {
+  border-radius: 1.5rem 1.5rem 0 0;
+  margin-top: 2rem;
+
+  .h4 {
+    color: #fff;
+    font-size: 1rem;
+    font-family: $font-family-base;
+    font-weight: 600;
+  }
+
+  .nav-link:hover { color: #fff; text-decoration: none; }
+
+  .form-control {
+    background: #1E293B;
+    border-color: #334155;
+    color: #fff;
+  }
+
+  .social-links .btn-primary {
+    --bs-btn-bg: #1E293B;
+    --bs-btn-border-color: #1E293B;
+    border-radius: 50%;
+  }
+}

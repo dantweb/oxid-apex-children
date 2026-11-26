@@ -1,0 +1,20 @@
+{# APEX Voltage: round category icons in a horizontally scrolling strip. #}
+{% if oxcmp_categories %}
+    <section class="container-xxl row-spacer" aria-labelledby="vt-cats-title">
+        <h2 id="vt-cats-title" class="visually-hidden">{{ translate({ ident: "CATEGORIES" }) }}</h2>
+        <div class="vt-catstrip">
+            {% for _cat in oxcmp_categories %}
+                {% if _cat.getIsVisible() %}
+                    {% set _img = _cat.getIconUrl() ?: _cat.getThumbUrl() %}
+                    <a class="vt-cat" href="{{ _cat.getLink()|raw }}">
+                        <span class="vt-cat-img">
+                            <img loading="lazy" width="96" height="96" alt=""
+                                 src="{{ (_img ?: oViewConf.getImageUrl('subcat-placeholder.png'))|raw }}">
+                        </span>
+                        {{ _cat.oxcategories__oxtitle.value }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}

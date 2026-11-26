@@ -1,0 +1,444 @@
+//
+// APEX Redline — visual layer
+// --------------------------------------------------
+
+// Typography: condensed, uppercase, tight
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height: 1.05;
+}
+
+.theme-eyebrow { color: $rl-red; }
+
+// Section headings get the red "stripe" accent used across auto-parts shops
+.article-slider h2,
+.theme-section-head h2,
+.rl-heading {
+  position: relative;
+  padding-left: 14px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .1em;
+    bottom: .1em;
+    width: 5px;
+    background: $rl-red;
+    transform: skewX(-12deg);
+  }
+}
+
+// Buttons: bold, uppercase, red call-to-action
+.btn {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.btn-highlight,
+.btn-primary {
+  --bs-btn-bg: #{$rl-red};
+  --bs-btn-border-color: #{$rl-red};
+  --bs-btn-hover-bg: #{$rl-red-dark};
+  --bs-btn-hover-border-color: #{$rl-red-dark};
+  --bs-btn-active-bg: #{$rl-red-dark};
+  --bs-btn-active-border-color: #{$rl-red-dark};
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #{$rl-black};
+  --bs-btn-border-color: #{$rl-black};
+  --bs-btn-hover-bg: #{$rl-black};
+  --bs-btn-hover-border-color: #{$rl-black};
+}
+
+.btn-tag {
+  border: 1px solid $rl-border;
+  font-family: $headings-font-family;
+  font-weight: 600;
+
+  &:hover {
+    background: $rl-black;
+    border-color: $rl-black;
+    color: #fff;
+  }
+}
+
+.btn-rounded { border-radius: $border-radius; }
+
+.badge {
+  background: $rl-red;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+.badge.badge-sale {
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 11px;
+  padding: .35em .6em;
+}
+
+// --------------------------------------------------
+// Header: black meta bar / white main bar / red category bar
+// --------------------------------------------------
+.header {
+  box-shadow: none;
+  border-bottom: 0;
+
+  .header-container {
+    border-bottom: 0;
+    gap: 1.25rem;
+  }
+
+  .menu-dropdowns .btn:hover svg,
+  .menu-dropdowns .btn.show svg { fill: $rl-red; }
+
+  .badge { background: $rl-red; color: #fff; }
+}
+
+.meta {
+  font-size: 13px;
+  border-bottom: 3px solid $rl-red;
+
+  .rl-meta-contact {
+    display: none;
+    align-items: center;
+    gap: .5rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+
+    @include media-breakpoint-up(lg) { display: inline-flex; }
+
+    svg { fill: $rl-red; }
+  }
+}
+
+.header .usp-list {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+
+  svg { fill: $rl-red; }
+
+  @include media-breakpoint-up(lg) {
+    .list-inline-item { font-size: 13px; }
+  }
+}
+
+// Search: wide, bordered black, red submit
+.search {
+  flex: 1 1 auto;
+
+  @include media-breakpoint-up(lg) {
+    max-width: 720px;
+    min-width: 420px;
+  }
+
+  &:focus-within { outline: 0; }
+
+  .form-control {
+    border: 2px solid $rl-black;
+    height: 48px;
+    padding-right: 64px;
+  }
+
+  .btn {
+    border: 0;
+    background: $rl-red;
+    width: 56px;
+    justify-content: center;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    svg { fill: #fff; }
+
+    &:hover {
+      background: $rl-red-dark;
+
+      svg { fill: #fff; }
+    }
+  }
+}
+
+.rl-navbar {
+  @include media-breakpoint-up(lg) {
+    background: $rl-red;
+
+    .navbar-collapse { background: transparent; }
+
+    .navbar-nav-mega {
+      .nav-link-1 {
+        color: #fff;
+        font-family: $headings-font-family;
+        font-weight: 600;
+        font-size: 1.05rem;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        padding: .85rem 1rem;
+        margin-right: 0;
+      }
+
+      .nav-item:hover .nav-link-1 {
+        background: $rl-black;
+        color: #fff;
+      }
+
+      .nav-item.has-subs:hover .nav-link-1::after { background: $rl-black; height: 0; }
+
+      .nav-level-2 {
+        border-top: 3px solid $rl-black;
+        padding: 30px 25px;
+      }
+
+      .nav-item-2 > .nav-link {
+        font-weight: 600;
+        color: $rl-black;
+
+        &:hover { color: $rl-red; }
+      }
+    }
+  }
+}
+
+.mobile-nav {
+  background: $rl-black;
+
+  .btn { color: #fff; }
+
+  svg { fill: #fff; }
+
+  .badge { background: $rl-red; }
+}
+
+// --------------------------------------------------
+// Vehicle finder ("Find parts for your car")
+// --------------------------------------------------
+.rl-finder {
+  background: $rl-carbon;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid $rl-red;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -60px;
+    width: 280px;
+    background: $rl-red;
+    transform: skewX(-18deg);
+    opacity: .9;
+    display: none;
+
+    @include media-breakpoint-up(xl) { display: block; }
+  }
+
+  .container-xxl {
+    position: relative;
+    z-index: 1;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  &-title {
+    color: #fff;
+    margin-bottom: .25rem;
+  }
+
+  &-lead {
+    color: #A1A1AA;
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    color: #D4D4D8;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 600;
+  }
+
+  .form-select,
+  .form-control {
+    border: 0;
+    height: 48px;
+  }
+
+  .btn {
+    height: 48px;
+    width: 100%;
+  }
+
+  &-step {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    align-items: center;
+    justify-content: center;
+    background: $rl-red;
+    color: #fff;
+    font-size: 11px;
+    border-radius: 2px;
+  }
+}
+
+// --------------------------------------------------
+// Trust strip (oxstartusps CMS snippet)
+// --------------------------------------------------
+.usp-list-content {
+  background: #fff;
+  color: $rl-black;
+  border-top: 1px solid $rl-border;
+  border-bottom: 1px solid $rl-border;
+  padding: 24px 0;
+
+  .list-inline-item {
+    flex-direction: row;
+    gap: .75rem;
+    text-transform: uppercase;
+    font-size: 15px;
+    justify-content: center;
+
+    svg {
+      fill: $rl-red;
+      margin: 0;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  svg { fill: $rl-red; }
+}
+
+// --------------------------------------------------
+// Category tiles
+// --------------------------------------------------
+.rl-cats {
+  --theme-cat-min: 180px;
+  --theme-grid-gap: .75rem;
+}
+
+.rl-cat-tile {
+  border: 1px solid $rl-border;
+  background: #fff;
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+  transition: border-color .15s, box-shadow .15s;
+
+  img {
+    aspect-ratio: 4 / 3;
+    max-height: 220px;
+    object-fit: contain;
+    margin-bottom: .75rem;
+  }
+
+  span {
+    font-family: $headings-font-family;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    line-height: 1.1;
+  }
+
+  small { color: $rl-muted; }
+
+  &:hover,
+  &:focus {
+    border-color: $rl-red;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+
+    span { color: $rl-red; }
+  }
+}
+
+// --------------------------------------------------
+// Product cards: bordered, square, red price, black add-to-cart
+// --------------------------------------------------
+.product-card {
+  border: 1px solid $rl-border !important;
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+
+  &:hover,
+  &:focus-within {
+    border-color: $rl-red !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .08);
+  }
+
+  .product-img-wrapper {
+    background: #fff;
+    border-bottom: 1px solid $rl-border;
+    padding: .75rem;
+  }
+
+  .card-title {
+    font-family: $font-family-base;
+    font-weight: 600;
+    font-size: .95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+
+  .price .h5 {
+    font-family: $headings-font-family;
+    font-size: 1.5rem;
+    color: $rl-black;
+
+    &.text-danger { color: $rl-red !important; }
+  }
+
+  .actions .btn-highlight {
+    --bs-btn-bg: #{$rl-black};
+    --bs-btn-border-color: #{$rl-black};
+    --bs-btn-hover-bg: #{$rl-red};
+    --bs-btn-hover-border-color: #{$rl-red};
+  }
+
+  .badges .badge-sale { background: $rl-red !important; }
+}
+
+.slider-nav .btn {
+  border-radius: 2px !important;
+  background: $rl-black;
+  color: #fff;
+
+  svg { fill: #fff; }
+
+  &:hover { background: $rl-red !important; }
+}
+
+.brand-card .card-img { opacity: .85; }
+
+// --------------------------------------------------
+// Footer
+// --------------------------------------------------
+.footer {
+  border-top: 4px solid $rl-red;
+
+  .h4 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: 1.1rem;
+  }
+
+  .nav-link:hover { color: $rl-red; text-decoration: none; }
+
+  .social-links .btn-primary {
+    --bs-btn-bg: #{$rl-carbon};
+    --bs-btn-border-color: #{$rl-carbon};
+    --bs-btn-hover-bg: #{$rl-red};
+    --bs-btn-hover-border-color: #{$rl-red};
+  }
+}
+
+.breadcrumb-item a:hover { color: $rl-red; }

@@ -1,0 +1,16 @@
+{
+  "name": "oxid-esales/apex-child-2-theme",
+  "description": "APEX Voltage – APEX child theme for modern electronics shops",
+  "type": "oxideshop-theme",
+  "license": ["proprietary"],
+  "require": {
+    "oxid-esales/apex-theme": "^3.0"
+  },
+  "extra": {
+    "oxideshop": {
+      "target-directory": "apex-child-2",
+      "assets-directory": "out/apex-child-2",
+      "blacklist-filter": ["build/**/*", "composer.json"]
+    }
+  }
+}

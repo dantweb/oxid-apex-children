@@ -1,0 +1,23 @@
+{# APEX Redline: square part-group tiles for the top-level categories. #}
+{% if oxcmp_categories %}
+    <section class="container-xxl row-spacer" aria-labelledby="rl-cats-title">
+        <div class="theme-section-head">
+            <h2 id="rl-cats-title" class="h3">{{ translate({ ident: "REDLINE_CATEGORIES_TITLE" }) }}</h2>
+        </div>
+        <div class="theme-cat-grid rl-cats">
+            {% for _cat in oxcmp_categories %}
+                {% if _cat.getIsVisible() %}
+                    {% set _img = _cat.getIconUrl() ?: _cat.getThumbUrl() %}
+                    <a class="theme-cat-tile rl-cat-tile" href="{{ _cat.getLink()|raw }}">
+                        <img loading="lazy" width="400" height="300" alt=""
+                             src="{{ (_img ?: oViewConf.getImageUrl('subcat-placeholder.png'))|raw }}">
+                        <span>{{ _cat.oxcategories__oxtitle.value }}</span>
+                        {% if _cat.getNrOfArticles() > 0 %}
+                            <small>{{ _cat.getNrOfArticles() }} {{ translate({ ident: "REDLINE_PARTS" }) }}</small>
+                        {% endif %}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}

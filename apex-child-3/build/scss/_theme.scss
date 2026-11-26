@@ -1,0 +1,505 @@
+//
+// APEX Atelier — visual layer
+// --------------------------------------------------
+
+@mixin at-caps($size: .75rem, $track: .18em) {
+  font-family: $font-family-base;
+  font-size: $size;
+  font-weight: 500;
+  letter-spacing: $track;
+  text-transform: uppercase;
+}
+
+body { font-weight: 400; }
+
+h1, h2, h3, .h1, .h2, .h3 {
+  font-weight: 500;
+  letter-spacing: -.005em;
+  line-height: 1.1;
+}
+
+.theme-eyebrow { color: $at-gold; }
+
+.at-display-italic {
+  font-family: $headings-font-family;
+  font-style: italic;
+}
+
+// Buttons: square, uppercase, tracked
+.btn {
+  @include at-caps(.75rem, .16em);
+}
+
+.btn-highlight,
+.btn-primary {
+  --bs-btn-bg: #{$at-ink};
+  --bs-btn-border-color: #{$at-ink};
+  --bs-btn-hover-bg: #{$at-gold};
+  --bs-btn-hover-border-color: #{$at-gold};
+  --bs-btn-active-bg: #{$at-gold};
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+}
+
+.btn-outline-primary {
+  background: transparent;
+  --bs-btn-hover-bg: #{$at-ink};
+}
+
+.btn-light {
+  background: $at-ivory;
+  border: 0 !important;
+}
+
+.btn-tag {
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 1.5rem;
+
+  &:hover {
+    background: transparent !important;
+    border-bottom-color: $at-ink;
+  }
+}
+
+.btn-rounded { border-radius: 0; }
+
+.badge {
+  background: $at-ink;
+  border-radius: 0;
+}
+
+.badge.badge-sale {
+  background: transparent !important;
+  color: $at-sale;
+  @include at-caps(.65rem, .2em);
+  padding: 0;
+}
+
+// Underline-only form fields
+.form-control,
+.form-select {
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+.input-group > .form-control { padding-left: .5rem; }
+
+.dropdown .dropdown-toggle,
+.header .dropdowns .dropdown-toggle {
+  border-width: 0 0 1px;
+  background: transparent;
+}
+
+.breadcrumb { @include at-caps(.68rem, .14em); }
+
+// --------------------------------------------------
+// Header: ink announcement bar, centered logo, search left, icons right, centered nav
+// --------------------------------------------------
+.header {
+  box-shadow: none;
+  border-bottom: 1px solid $at-hairline;
+
+  .header-container {
+    border-bottom: 0;
+
+    @include media-breakpoint-up(lg) {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 26px 0 18px;
+
+      .logo-link { order: 2; justify-self: center; }
+      .search { order: 1; justify-self: start; }
+      .menu-dropdowns { order: 3; justify-self: end; }
+    }
+  }
+
+  .logo-img {
+    @include media-breakpoint-up(lg) { max-height: 52px; width: auto; }
+  }
+
+  svg { width: 24px; height: 24px; }
+
+  .menu-dropdowns .btn {
+    &:hover svg, &.show svg { fill: $at-gold; }
+
+    .badge {
+      background: $at-ink;
+      color: #fff;
+      font-size: 9px;
+      min-width: 16px;
+    }
+  }
+}
+
+.meta {
+  @include at-caps(.68rem, .2em);
+
+  .meta-wrapper { position: relative; }
+}
+
+.header .usp-list {
+  @include at-caps(.68rem, .2em);
+
+  svg { display: none; }
+
+  @include media-breakpoint-up(lg) {
+    justify-content: center;
+
+    .list-inline-item {
+      @include at-caps(.68rem, .2em);
+      flex: 0 0 auto;
+      justify-content: center;
+      padding: 0 1.5rem;
+    }
+  }
+}
+
+.search {
+  @include media-breakpoint-up(lg) {
+    min-width: 260px;
+    max-width: 300px;
+  }
+
+  &:focus-within { outline: 0; }
+
+  .form-control {
+    background: transparent;
+    border-width: 0 0 1px;
+    border-color: $at-hairline;
+    @include at-caps(.72rem, .16em);
+    padding-left: 0;
+
+    &:focus { border-color: $at-ink; }
+  }
+
+  .btn {
+    border: 0;
+    background: transparent;
+
+    svg { width: 18px; height: 18px; }
+
+    &:hover svg { fill: $at-gold; }
+  }
+}
+
+.at-navrow {
+  @include media-breakpoint-up(lg) {
+    #mainnav { justify-content: center; }
+
+    .navbar-nav-mega {
+      justify-content: center;
+      width: 100%;
+      flex: 1 1 100%;
+      max-width: 100%;
+
+      .nav-link-1 {
+        @include at-caps(.72rem, .22em);
+        margin: 0 1.25rem;
+        padding: .9rem 0;
+        position: relative;
+        background: transparent !important;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 100%;
+          bottom: .55rem;
+          height: 1px;
+          background: $at-ink;
+          transition: right .25s ease;
+        }
+      }
+
+      .nav-item:hover .nav-link-1 {
+        color: $at-ink;
+
+        &::before { right: 0; }
+      }
+
+      .nav-item.has-subs:hover .nav-link-1::after { background: transparent; }
+
+      .nav-level-2 {
+        background: $at-ivory;
+        box-shadow: none;
+        border-top: 1px solid $at-hairline;
+        border-bottom: 1px solid $at-hairline;
+        padding: 40px 25px;
+      }
+
+      .nav-item-2 > .nav-link {
+        font-family: $headings-font-family;
+        font-size: 1.25rem;
+        color: $at-ink;
+
+        &:hover { color: $at-gold; }
+      }
+    }
+  }
+}
+
+.navbar-collapse { background-color: $at-ivory; }
+
+.mobile-nav {
+  background: $at-ivory;
+  border-top: 1px solid $at-hairline;
+  box-shadow: none;
+
+  .btn-text { @include at-caps(.6rem, .14em); }
+}
+
+// --------------------------------------------------
+// Start page
+// --------------------------------------------------
+.at-hero {
+  .carousel-caption, .card-img-overlay {
+    h2, .h2, h3, .h3 { font-family: $headings-font-family; font-weight: 500; }
+  }
+}
+
+.at-section-head {
+  text-align: center;
+  margin-bottom: 2.25rem;
+
+  h2 { margin-bottom: .25rem; }
+
+  p { color: $at-muted; margin: 0; }
+}
+
+.article-slider > .container-xxl:first-child {
+  text-align: center;
+  margin-bottom: 1.25rem;
+
+  h2 {
+    font-size: $h2-font-size;
+    margin-bottom: .25rem;
+  }
+
+  p { color: $at-muted; }
+}
+
+.at-collections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+
+  @include media-breakpoint-up(md) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.at-collection {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  background: $at-beige;
+
+  img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    height: auto;
+    object-fit: cover;
+    transition: transform .8s ease;
+  }
+
+  &-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 4rem 1.5rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, .55) 100%);
+
+    .h2 { color: #fff; margin-bottom: .5rem; }
+  }
+
+  &-cta {
+    @include at-caps(.68rem, .22em);
+    border-bottom: 1px solid rgba(255, 255, 255, .7);
+    padding-bottom: 3px;
+  }
+
+  &:hover img,
+  &:focus img { transform: scale(1.05); }
+
+  &:hover { color: #fff; }
+}
+
+.at-editorial {
+  background: $at-beige;
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+  }
+
+  &-text {
+    padding: 3rem 1.5rem;
+    max-width: 520px;
+    margin: 0 auto;
+
+    @include media-breakpoint-up(lg) { padding: 5rem 2rem; }
+
+    p { color: $at-muted; }
+  }
+
+  .btn { margin-top: 1rem; }
+}
+
+.at-link {
+  @include at-caps(.7rem, .2em);
+  color: $at-ink;
+  text-decoration: none;
+  border-bottom: 1px solid $at-ink;
+  padding-bottom: 3px;
+
+  &:hover { color: $at-gold; border-color: $at-gold; }
+}
+
+// Values strip (oxstartusps)
+.usp-list-content {
+  background: transparent;
+  color: $at-ink;
+  border-top: 1px solid $at-hairline;
+  border-bottom: 1px solid $at-hairline;
+  padding: 2.5rem 0;
+
+  .list-inline-item {
+    @include at-caps(.7rem, .2em);
+
+    svg {
+      fill: $at-gold;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 1rem;
+    }
+  }
+
+  svg { fill: $at-gold; }
+}
+
+.brand-card .card-img { opacity: 1; filter: grayscale(1); }
+
+// --------------------------------------------------
+// Product cards: borderless, 3:4 imagery, quiet type
+// --------------------------------------------------
+.product-card {
+  background: transparent;
+
+  .product-img-wrapper { background: $at-beige; }
+
+  .product-img {
+    aspect-ratio: 3 / 4;
+    max-height: none !important;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .img-2 { background: $at-beige !important; object-fit: cover; }
+
+  &:hover .img-2,
+  &:focus-within .img-2 { height: 100% !important; }
+
+  .card-body { padding-left: 0; padding-right: 0; text-align: center; }
+
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-title {
+    @include at-caps(.72rem, .14em);
+    margin-bottom: .35rem;
+  }
+
+  .price {
+    align-items: center;
+
+    .h5 {
+      font-family: $font-family-base;
+      font-weight: 300;
+      font-size: .95rem;
+      margin-left: 0 !important;
+
+      &.text-danger { color: $at-sale !important; }
+    }
+  }
+
+  .text-muted { position: static !important; }
+
+  .short-desc { display: none; }
+
+  .badges {
+    top: 12px;
+    left: 12px;
+  }
+
+  .badge-sale {
+    background: $at-ivory !important;
+    padding: .35em .6em !important;
+  }
+
+  .actions .bottom .input-group .form-control {
+    background: $at-ivory;
+    border: 0;
+    text-align: center;
+  }
+}
+
+.slider-nav .btn {
+  border-radius: 0 !important;
+  background: $at-ivory;
+  box-shadow: none !important;
+  width: 48px !important;
+  height: 48px !important;
+  line-height: 48px !important;
+
+  &:hover { background: $at-ink !important; color: #fff; }
+}
+
+// --------------------------------------------------
+// Footer: beige, airy, centered newsletter feel
+// --------------------------------------------------
+.footer {
+  border-top: 1px solid $at-hairline;
+
+  .h4 {
+    @include at-caps(.7rem, .22em);
+    color: $at-ink;
+    margin-bottom: 1.25rem;
+  }
+
+  .nav-link { font-size: .9rem; }
+
+  .nav-link:hover { color: $at-gold; text-decoration: none; }
+
+  .footer-newsletter .h4 {
+    font-family: $headings-font-family;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .social-links .btn-primary {
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-bg: transparent;
+    --bs-btn-hover-border-color: transparent;
+    color: $at-ink;
+
+    svg { fill: $at-ink; }
+
+    &:hover svg { fill: $at-gold; }
+  }
+}
+
+// Breathing room above every product slider (CMS slots above have no bottom spacing)
+.article-slider { padding-top: 2.5rem; }

@@ -1,0 +1,137 @@
+//
+// APEX Redline — theme variables (replaces apex/build/scss/_variables.scss)
+// Palette: racing red, carbon black, white. Sharp corners, condensed uppercase headings.
+// --------------------------------------------------
+
+$rl-red: #D7182A;
+$rl-red-dark: #B01020;
+$rl-black: #111111;
+$rl-carbon: #1E1F22;
+$rl-surface: #F4F4F5;
+$rl-border: #E4E4E7;
+$rl-muted: #6B7280;
+$rl-fit-green: #16A34A;
+
+$font-family-base: 'Barlow', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+$headings-font-weight: 700;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$legend-font-size: 1.2rem;
+$breadcrumb-font-size: 0.875rem;
+$breadcrumb-margin-bottom: 0;
+
+$grid-gutter-width: 0.75rem;
+$spacer: 0.625rem;
+$container-padding-x: $grid-gutter-width;
+
+$h1-font-size: $font-size-base * 2.75;
+$h2-font-size: $font-size-base * 2.125;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.375;
+$h5-font-size: $font-size-base * 1.125;
+$h6-font-size: $font-size-base;
+
+$font-family-price: $headings-font-family;
+$headings-margin-bottom: 2 * $spacer;
+
+$primary: $rl-black;
+$secondary: #fff;
+$highlight: $rl-red;
+$success: $rl-fit-green;
+$danger: $rl-red;
+$warning: #F59E0B;
+$info: #0EA5E9;
+$light: $rl-surface;
+
+$tag-bg: $rl-surface;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "highlight":  $highlight,
+  "dark":       $rl-carbon
+);
+
+$body-color: #18181B;
+$body-bg: #FFFFFF;
+$link-color: $rl-black;
+$link-hover-color: $rl-red;
+
+$rfs-base-value: 0.7rem;
+
+$enable-caret:                false;
+$enable-rounded:              true;
+$enable-shadows:              false;
+$enable-gradients:            false;
+$enable-transitions:          true;
+$enable-reduced-motion:       true;
+$enable-smooth-scroll:        true;
+$enable-grid-classes:         true;
+$enable-cssgrid:              false;
+$enable-button-pointers:      true;
+$enable-rfs:                  true;
+$enable-validation-icons:     true;
+$enable-negative-margins:     false;
+$enable-deprecation-messages: false;
+$enable-important-utilities:  true;
+
+// Industrial look: 2px corners everywhere
+$border-radius:    2px;
+$border-radius-sm: 2px;
+$border-radius-lg: 2px;
+$border-color: $rl-border;
+
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1500px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1440px);
+
+/// Buttons
+$btn-box-shadow: none;
+$btn-font-weight: 700;
+$btn-padding-y: .625rem;
+$btn-padding-x: 1.25rem;
+
+/// Header
+$ox-header-bg: #fff;
+$ox-header-color: $rl-black;
+$ox-header-link-color: $rl-black;
+
+$ox-meta-bg: $rl-black;
+$ox-meta-color: #E4E4E7;
+$ox-meta-link-color: #fff;
+
+$dropdown-border-color: $rl-border;
+
+/// Footer
+$ox-footer-bg: $rl-black;
+$ox-footer-color: #A1A1AA;
+$ox-footer-link-color: #E4E4E7;
+
+/// Ratings
+$ox-rating-star-filled-color: $warning;
+$ox-rating-star-empty-color: #D4D4D8;
+
+/// Forms
+$input-bg: #fff;
+$input-border-color: #D4D4D8;
+$input-box-shadow: none;
+$input-padding-y: .625rem;
+$input-focus-border-color: $rl-red;
+$input-focus-box-shadow: 0 0 0 .15rem rgba($rl-red, .2);
+$form-label-margin-bottom: .25rem;
+$form-label-font-size: 12px;
+$form-label-color: $rl-muted;
+$form-select-box-shadow: none;
+$form-select-focus-border-color: $rl-red;
+
+/// Cards
+$card-bg: #fff;
+$card-border-width: 1px;
+$card-border-color: $rl-border;
+$card-cap-bg: $card-bg;
+
+$rating-star-color: $rl-black;
+
+$details-ratings: true;
+$list-view: false;
+$grid-view: true;

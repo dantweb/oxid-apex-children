@@ -1,0 +1,54 @@
+// Helpers shared by all child themes (compiled after apex partials, before the theme layer).
+
+.theme-eyebrow {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+
+.theme-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  h2 { margin: 0; }
+}
+
+// Category tile grid used by the overridden start pages
+.theme-cat-grid {
+  display: grid;
+  gap: var(--theme-grid-gap, 1rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include media-breakpoint-up(md) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  // auto-fit: a shop with 3 top-level categories fills the row instead of leaving empty columns
+  @include media-breakpoint-up(xl) { grid-template-columns: repeat(auto-fit, minmax(var(--theme-cat-min, 180px), 1fr)); }
+}
+
+.theme-cat-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform .35s ease;
+  }
+
+  &:hover img,
+  &:focus img { transform: scale(1.04); }
+}
+
+.theme-usp-strip {
+  .list-inline-item { margin: 0; }
+}

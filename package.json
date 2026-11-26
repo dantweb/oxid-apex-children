@@ -1,0 +1,25 @@
+{
+  "name": "apex-child-themes",
+  "private": true,
+  "version": "1.0.0",
+  "description": "APEX child themes: Redline (auto parts), Voltage (electronics), Atelier (luxury fashion)",
+  "type": "module",
+  "scripts": {
+    "build": "node bin/build.mjs",
+    "build:redline": "node bin/build.mjs apex-child-1",
+    "build:voltage": "node bin/build.mjs apex-child-2",
+    "build:atelier": "node bin/build.mjs apex-child-3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "bootstrap": "5.2.3",
+    "postcss": "^8.4.47",
+    "sass": "~1.60.0",
+    "@fontsource/barlow": "^5.0.0",
+    "@fontsource/barlow-condensed": "^5.0.0",
+    "@fontsource/inter": "^5.0.0",
+    "@fontsource/space-grotesk": "^5.0.0",
+    "@fontsource/cormorant-garamond": "^5.0.0",
+    "@fontsource/jost": "^5.0.0"
+  }
+}

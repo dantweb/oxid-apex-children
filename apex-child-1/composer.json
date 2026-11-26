@@ -1,0 +1,16 @@
+{
+  "name": "oxid-esales/apex-child-1-theme",
+  "description": "APEX Redline – APEX child theme for auto spare parts & accessories (red/black/white)",
+  "type": "oxideshop-theme",
+  "license": ["proprietary"],
+  "require": {
+    "oxid-esales/apex-theme": "^3.0"
+  },
+  "extra": {
+    "oxideshop": {
+      "target-directory": "apex-child-1",
+      "assets-directory": "out/apex-child-1",
+      "blacklist-filter": ["build/**/*", "composer.json"]
+    }
+  }
+}

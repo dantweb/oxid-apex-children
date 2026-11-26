@@ -1,0 +1,39 @@
+{#
+    APEX Atelier: editorial split section (image + story).
+    Image: theme setting sAtelierEditorialImage (file in out/<theme>/img/), otherwise the picture of
+    the first visible top-level category. The call-to-action links to that category.
+#}
+{% set _edCat = null %}
+{% for _cat in oxcmp_categories %}
+    {% if _edCat is null and _cat.getIsVisible() %}
+        {% set _edCat = _cat %}
+    {% endif %}
+{% endfor %}
+{% set _edImageSetting = oViewConf.getViewThemeParam('sAtelierEditorialImage') %}
+{% if _edImageSetting %}
+    {% set _edImg = oViewConf.getImageUrl(_edImageSetting) %}
+{% elseif _edCat %}
+    {% set _edImg = _edCat.getThumbUrl() ?: _edCat.getIconUrl() %}
+{% endif %}
+<section class="at-editorial row-spacer" aria-labelledby="at-editorial-title">
+    <div class="row g-0 align-items-stretch">
+        {% if _edImg %}
+            <div class="col-lg-6">
+                <img class="at-editorial-img" loading="lazy" src="{{ _edImg|raw }}" alt="" width="800" height="900">
+            </div>
+        {% endif %}
+        <div class="{% if _edImg %}col-lg-6{% else %}col-12{% endif %} d-flex align-items-center">
+            <div class="at-editorial-text text-center">
+                <span class="theme-eyebrow">{{ translate({ ident: "ATELIER_EDITORIAL_EYEBROW" }) }}</span>
+                <h2 id="at-editorial-title">
+                    {{ translate({ ident: "ATELIER_EDITORIAL_TITLE" }) }}
+                    <span class="at-display-italic d-block">{{ translate({ ident: "ATELIER_EDITORIAL_TITLE_ITALIC" }) }}</span>
+                </h2>
+                <p>{{ translate({ ident: "ATELIER_EDITORIAL_TEXT" }) }}</p>
+                {% if _edCat %}
+                    <a class="btn btn-primary" href="{{ _edCat.getLink()|raw }}">{{ translate({ ident: "ATELIER_EDITORIAL_CTA" }) }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

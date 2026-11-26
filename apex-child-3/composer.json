@@ -1,0 +1,16 @@
+{
+  "name": "oxid-esales/apex-child-3-theme",
+  "description": "APEX Atelier – APEX child theme for luxury fashion & apparel",
+  "type": "oxideshop-theme",
+  "license": ["proprietary"],
+  "require": {
+    "oxid-esales/apex-theme": "^3.0"
+  },
+  "extra": {
+    "oxideshop": {
+      "target-directory": "apex-child-3",
+      "assets-directory": "out/apex-child-3",
+      "blacklist-filter": ["build/**/*", "composer.json"]
+    }
+  }
+}

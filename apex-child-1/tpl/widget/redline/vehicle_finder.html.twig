@@ -1,0 +1,63 @@
+{# APEX Redline: "find parts for your vehicle" bar. Builds a normal shop search (cl=search) from make, model, year and part keyword. #}
+{% set rlMakes = oViewConf.getViewThemeParam('aRedlineVehicleMakes') %}
+<section class="rl-finder row-spacer" aria-labelledby="rl-finder-title">
+    <div class="container-xxl">
+        <div class="row align-items-end g-3">
+            <div class="col-12 col-xl-3">
+                <span class="theme-eyebrow">{{ translate({ ident: "REDLINE_FINDER_EYEBROW" }) }}</span>
+                <h2 id="rl-finder-title" class="h3 rl-finder-title">{{ translate({ ident: "REDLINE_FINDER_TITLE" }) }}</h2>
+                <p class="rl-finder-lead mb-0">{{ translate({ ident: "REDLINE_FINDER_LEAD" }) }}</p>
+            </div>
+            <div class="col-12 col-xl-8">
+                <form id="rlFinder" class="row g-2" action="{{ oViewConf.getSelfActionLink()|raw }}" method="get" role="search">
+                    {{ oViewConf.getHiddenSid()|raw }}
+                    <input type="hidden" name="cl" value="search">
+                    <div class="col-6 col-md">
+                        <label class="form-label" for="rlMake"><span class="rl-finder-step">1</span>{{ translate({ ident: "REDLINE_FINDER_MAKE" }) }}</label>
+                        <select id="rlMake" class="form-select" data-rl-part>
+                            <option value="">{{ translate({ ident: "REDLINE_FINDER_CHOOSE" }) }}</option>
+                            {% for make in rlMakes %}
+                                <option value="{{ make }}">{{ make }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-6 col-md">
+                        <label class="form-label" for="rlModel"><span class="rl-finder-step">2</span>{{ translate({ ident: "REDLINE_FINDER_MODEL" }) }}</label>
+                        <input id="rlModel" class="form-control" type="text" data-rl-part placeholder="{{ translate({ ident: "REDLINE_FINDER_MODEL_PLACEHOLDER" }) }}">
+                    </div>
+                    <div class="col-6 col-md">
+                        <label class="form-label" for="rlYear"><span class="rl-finder-step">3</span>{{ translate({ ident: "REDLINE_FINDER_YEAR" }) }}</label>
+                        <select id="rlYear" class="form-select" data-rl-part>
+                            <option value="">{{ translate({ ident: "REDLINE_FINDER_CHOOSE" }) }}</option>
+                            {% for year in range("now"|date("Y"), 1990) %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-6 col-md">
+                        <label class="form-label" for="rlPart"><span class="rl-finder-step">4</span>{{ translate({ ident: "REDLINE_FINDER_PART" }) }}</label>
+                        <input id="rlPart" class="form-control" type="text" name="searchparam" placeholder="{{ translate({ ident: "REDLINE_FINDER_PART_PLACEHOLDER" }) }}">
+                    </div>
+                    <div class="col-12 col-md-auto d-flex align-items-end">
+                        <button type="submit" class="btn btn-highlight">{{ translate({ ident: "REDLINE_FINDER_SUBMIT" }) }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    (function () {
+        var form = document.getElementById('rlFinder');
+        if (!form) { return; }
+        form.addEventListener('submit', function () {
+            var part = form.querySelector('[name="searchparam"]');
+            var terms = [];
+            form.querySelectorAll('[data-rl-part]').forEach(function (el) {
+                if (el.value.trim()) { terms.push(el.value.trim()); }
+            });
+            if (part.value.trim()) { terms.push(part.value.trim()); }
+            part.value = terms.join(' ');
+        });
+    })();
+</script>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="48" viewBox="0 0 220 48" role="img" aria-label="Maison Atelier">
+  <text x="110" y="30" text-anchor="middle" font-family="'Cormorant Garamond','Didot','Bodoni 72','Times New Roman',serif" font-weight="500" font-size="30" letter-spacing="6" textLength="196" lengthAdjust="spacingAndGlyphs" fill="#111111">ATELIER</text>
+  <line x1="62" y1="40" x2="96" y2="40" stroke="#B08D57" stroke-width="1"/>
+  <text x="110" y="43" text-anchor="middle" font-family="'Jost','Helvetica Neue',Arial,sans-serif" font-size="7" letter-spacing="3" fill="#8A7F72">MAISON</text>
+  <line x1="124" y1="40" x2="158" y2="40" stroke="#B08D57" stroke-width="1"/>
+</svg>

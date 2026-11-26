@@ -1,0 +1,71 @@
+{#
+    APEX Redline start page. Order follows auto-parts shops:
+    hero (oxstartslot1) → vehicle finder → trust strip (oxstartusps) → part-group tiles
+    → deals (bargain) → bestsellers (top) → new arrivals → brands.
+    Block names are the apex ones, so modules extending them still apply.
+#}
+{% capture append = "oxidBlock_content" %}
+
+    <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_START" }) }}</h1>
+
+    {% include_content 'oxstartslot1' ignore missing  %}
+
+    {% block redline_start_vehicle_finder %}
+        {% if oViewConf.getViewThemeParam('blRedlineShowVehicleFinder') %}
+            {% include "widget/redline/vehicle_finder.html.twig" %}
+        {% endif %}
+    {% endblock %}
+
+    {% include_content "oxstartusps" ignore missing %}
+
+    {% if oViewConf.getViewThemeParam('showCategoryTiles') %}
+        {% include "widget/redline/category_tiles.html.twig" %}
+    {% endif %}
+
+    {% include_content 'oxstartslot2' ignore missing  %}
+
+    {% block start_bargain_articles %}
+        {% if oViewConf.getViewThemeParam('sShowBargainArticles') %}
+            {% set oBargainArticles = oView.getBargainArticleList() %}
+            <div class="article-slider row-spacer">
+                {% if oBargainArticles and oBargainArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, showMainLink: true, iProductsPerLine: 4} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block start_top_articles %}
+        {% if oViewConf.getViewThemeParam('sShowTopArticles') %}
+            {% set oTopArticles = oView.getTop5ArticleList() %}
+            <div class="article-slider row-spacer">
+                {% if oTopArticles and oTopArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles|length), listId: "topBox", products: oTopArticles, showMainLink: true, iProductsPerLine: 2} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block start_newest_articles %}
+        {% if oViewConf.getViewThemeParam('sShowNewestArticles') %}
+            {% set oNewestArticles = oView.getNewestArticles() %}
+            <div class="article-slider row-spacer">
+                {% if oNewestArticles and oNewestArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, showMainLink: true, iProductsPerLine: 4} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% include_content 'oxstartslot3' ignore missing  %}
+
+    {% block start_manufacturer_slider %}
+        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
+            {% include "widget/manufacturer.html.twig" %}
+        {% endif %}
+    {% endblock %}
+
+    {% include_content 'oxstartslot4' ignore missing %}
+    {{ insert_tracker() }}
+{% endcapture %}
+{% include "layout/page.html.twig" %}

@@ -1,0 +1,77 @@
+{#
+    APEX Atelier start page. Order follows luxury fashion shops:
+    full-bleed hero (oxstartslot1) → three collection tiles → "new in" → editorial story
+    → bestsellers → values strip (oxstartusps) → sale (bargain) → designers (manufacturers).
+    Block names are the apex ones, so modules extending them still apply.
+#}
+{% capture append = "oxidBlock_content" %}
+
+    <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_START" }) }}</h1>
+
+    {% block atelier_start_hero %}
+        <div class="at-hero row-spacer">
+            {% include_content 'oxstartslot1' ignore missing  %}
+        </div>
+    {% endblock %}
+
+    {% if oViewConf.getViewThemeParam('showCategoryTiles') %}
+        {% include "widget/atelier/collections.html.twig" %}
+    {% endif %}
+
+    {% include_content 'oxstartslot2' ignore missing  %}
+
+    {% block start_newest_articles %}
+        {% if oViewConf.getViewThemeParam('sShowNewestArticles') %}
+            {% set oNewestArticles = oView.getNewestArticles() %}
+            <div class="article-slider row-spacer">
+                {% if oNewestArticles and oNewestArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "ATELIER_NEW_IN"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, showMainLink: true, iProductsPerLine: 4} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block atelier_start_editorial %}
+        {% if oViewConf.getViewThemeParam('blAtelierShowEditorial') %}
+            {% include "widget/atelier/editorial.html.twig" %}
+        {% endif %}
+    {% endblock %}
+
+    {% block start_top_articles %}
+        {% if oViewConf.getViewThemeParam('sShowTopArticles') %}
+            {% set oTopArticles = oView.getTop5ArticleList() %}
+            <div class="article-slider row-spacer">
+                {% if oTopArticles and oTopArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles|length), listId: "topBox", products: oTopArticles, showMainLink: true, iProductsPerLine: 2} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    <div class="row-spacer">
+        {% include_content "oxstartusps" ignore missing %}
+    </div>
+
+    {% block start_bargain_articles %}
+        {% if oViewConf.getViewThemeParam('sShowBargainArticles') %}
+            {% set oBargainArticles = oView.getBargainArticleList() %}
+            <div class="article-slider row-spacer">
+                {% if oBargainArticles and oBargainArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, showMainLink: true, iProductsPerLine: 4} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% include_content 'oxstartslot3' ignore missing  %}
+
+    {% block start_manufacturer_slider %}
+        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
+            {% include "widget/manufacturer.html.twig" %}
+        {% endif %}
+    {% endblock %}
+
+    {% include_content 'oxstartslot4' ignore missing %}
+    {{ insert_tracker() }}
+{% endcapture %}
+{% include "layout/page.html.twig" %}

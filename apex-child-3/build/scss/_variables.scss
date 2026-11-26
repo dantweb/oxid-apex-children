@@ -1,0 +1,139 @@
+//
+// APEX Atelier — theme variables (replaces apex/build/scss/_variables.scss)
+// Palette: ivory, ink, warm beige, muted gold. No radii, hairline borders, airy spacing.
+// --------------------------------------------------
+
+$at-ink: #111111;
+$at-ivory: #FAF8F5;
+$at-beige: #EFE9E1;
+$at-taupe: #8A7F72;
+$at-gold: #B08D57;
+$at-text: #1A1A1A;
+$at-muted: #6E6A64;
+$at-hairline: #E6E0D8;
+$at-sale: #8B2E2E;
+
+$font-family-base: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+$headings-font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+$headings-font-weight: 500;
+$font-weight-base: 400;
+$font-size-base: 1rem;
+$line-height-base: 1.65;
+$legend-font-size: 1.2rem;
+$breadcrumb-font-size: 0.75rem;
+$breadcrumb-margin-bottom: 0;
+
+$grid-gutter-width: 1.25rem;
+$spacer: 0.75rem;
+$container-padding-x: $grid-gutter-width;
+
+$h1-font-size: $font-size-base * 3.25;
+$h2-font-size: $font-size-base * 2.5;
+$h3-font-size: $font-size-base * 2;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.125;
+$h6-font-size: $font-size-base;
+
+$font-family-price: $font-family-base;
+$headings-margin-bottom: 1.5 * $spacer;
+
+$primary: $at-ink;
+$secondary: #fff;
+$highlight: $at-ink;
+$success: #3F6B4E;
+$danger: $at-sale;
+$warning: $at-gold;
+$info: #4B6A88;
+$light: $at-beige;
+
+$tag-bg: transparent;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "highlight":  $highlight,
+  "dark":       $at-ink
+);
+
+$body-color: $at-text;
+$body-bg: $at-ivory;
+$link-color: $at-ink;
+$link-hover-color: $at-gold;
+
+$rfs-base-value: 0.7rem;
+
+$enable-caret:                false;
+$enable-rounded:              false;
+$enable-shadows:              false;
+$enable-gradients:            false;
+$enable-transitions:          true;
+$enable-reduced-motion:       true;
+$enable-smooth-scroll:        true;
+$enable-grid-classes:         true;
+$enable-cssgrid:              false;
+$enable-button-pointers:      true;
+$enable-rfs:                  true;
+$enable-validation-icons:     true;
+$enable-negative-margins:     false;
+$enable-deprecation-messages: false;
+$enable-important-utilities:  true;
+
+$border-color: $at-hairline;
+
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1600px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1160px, xxl: 1520px);
+
+/// Buttons
+$btn-box-shadow: none;
+$btn-font-weight: 500;
+$btn-padding-y: .8rem;
+$btn-padding-x: 2rem;
+$btn-font-size: .8rem;
+
+/// Header
+$ox-header-bg: $at-ivory;
+$ox-header-color: $at-ink;
+$ox-header-link-color: $at-ink;
+
+$ox-meta-bg: $at-ink;
+$ox-meta-color: #E9E4DC;
+$ox-meta-link-color: #fff;
+
+$dropdown-border-color: $at-hairline;
+
+/// Footer
+$ox-footer-bg: $at-beige;
+$ox-footer-color: $at-muted;
+$ox-footer-link-color: $at-ink;
+
+/// Ratings
+$ox-rating-star-filled-color: $at-gold;
+$ox-rating-star-empty-color: $at-hairline;
+
+/// Forms: underline-only inputs
+$input-bg: transparent;
+$input-border-color: $at-ink;
+$input-box-shadow: none;
+$input-padding-x: 0;
+$input-padding-y: .7rem;
+$input-focus-bg: transparent;
+$input-focus-border-color: $at-gold;
+$input-focus-box-shadow: none;
+$form-label-margin-bottom: .25rem;
+$form-label-font-size: 11px;
+$form-label-color: $at-muted;
+$form-select-box-shadow: none;
+$form-select-padding-x: 0;
+$form-select-focus-box-shadow: none;
+$form-select-focus-border-color: $at-gold;
+
+/// Cards
+$card-bg: transparent;
+$card-border-width: 0;
+$card-cap-bg: transparent;
+
+$rating-star-color: $at-ink;
+
+$details-ratings: true;
+$list-view: false;
+$grid-view: true;

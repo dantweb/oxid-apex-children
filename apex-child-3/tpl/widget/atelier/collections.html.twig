@@ -1,0 +1,26 @@
+{# APEX Atelier: three full-bleed portrait collection tiles (first three visible top-level categories). #}
+{% if oxcmp_categories %}
+    <section class="row-spacer" aria-labelledby="at-collections-title">
+        <div class="container-xxl at-section-head">
+            <span class="theme-eyebrow">{{ translate({ ident: "ATELIER_COLLECTIONS_EYEBROW" }) }}</span>
+            <h2 id="at-collections-title">{{ translate({ ident: "ATELIER_COLLECTIONS_TITLE" }) }}</h2>
+        </div>
+        <div class="at-collections">
+            {% set _shown = 0 %}
+            {% for _cat in oxcmp_categories %}
+                {% if _shown < 3 and _cat.getIsVisible() %}
+                    {% set _shown = _shown + 1 %}
+                    {% set _img = _cat.getThumbUrl() ?: _cat.getIconUrl() %}
+                    <a class="at-collection" href="{{ _cat.getLink()|raw }}">
+                        <img loading="lazy" width="600" height="800" alt=""
+                             src="{{ (_img ?: oViewConf.getImageUrl('subcat-placeholder.png'))|raw }}">
+                        <span class="at-collection-caption">
+                            <span class="h2 d-block">{{ _cat.oxcategories__oxtitle.value }}</span>
+                            <span class="at-collection-cta">{{ translate({ ident: "ATELIER_DISCOVER" }) }}</span>
+                        </span>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}

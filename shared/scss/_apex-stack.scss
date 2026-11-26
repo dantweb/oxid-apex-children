@@ -1,0 +1,71 @@
+// Shared APEX import stack for child themes.
+//
+// A child theme's style.scss imports, in this order:
+//   1. its own _variables.scss   (full replacement of apex/_variables.scss — apex vars are not !default)
+//   2. its own _fonts.scss       (@font-face for its fonts; apex's Roboto/Oswald are not loaded)
+//   3. this file                 (Bootstrap 5.2.3 + every apex partial, unchanged)
+//   4. its own _theme.scss       (the visual layer that makes the child theme different)
+//
+// Load paths (see bin/build.mjs): <theme>/build/scss, shared/scss, <apex>/build/scss, node_modules.
+
+@import 'custom_variables';
+@import 'mixins';
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";
+
+@import 'layout/base';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import 'message/alert';
+@import 'form/suggest';
+@import 'page/details/details';
+@import 'page/details/zoom';
+@import 'page/checkout/order';
+@import 'page/compare/compare';
+@import 'page/account/inc/account_menu';
+@import 'page/account/user';
+@import 'page/shop/start';
+@import 'widget/breadcrumb';
+@import 'widget/product/list';
+@import 'widget/locator/paging';
+@import 'widget/locator/attributes';
+@import 'widget/reviews/rating';
+@import 'widget/minibasket/minibasket';
+@import 'shortcodes/image-teaser-row';
+@import 'shortcodes/text-image-row';
+
+@import 'child-common';
