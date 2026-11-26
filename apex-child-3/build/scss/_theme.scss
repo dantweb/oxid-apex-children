@@ -146,6 +146,15 @@ h1, h2, h3, .h1, .h2, .h3 {
 
   svg { display: none; }
 
+  // phones: apex rotates the USPs in a 50px box — smaller, less tracked caps so a USP fits in two lines
+  @include media-breakpoint-down(lg) {
+    .list-inline-item {
+      font-size: 10px;
+      letter-spacing: .08em;
+      line-height: 1.3;
+    }
+  }
+
   @include media-breakpoint-up(lg) {
     justify-content: center;
 

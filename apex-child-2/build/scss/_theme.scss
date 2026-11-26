@@ -120,11 +120,26 @@ h1, h2, h3, .h1, .h2, .h3 { letter-spacing: -.02em; }
 
 .header .usp-list {
   font-size: 13px;
-  background: transparent;
 
   svg { fill: #93C5FD; }
 
-  .list-inline-item { background: transparent; }
+  // phones: apex slides the USPs over each other in a 50px box; each item's own (dark) background
+  // must stay, otherwise the items show through each other and light text sits on the white header
+  @include media-breakpoint-down(lg) {
+    background: $vt-navy;
+
+    .list-inline-item {
+      background: $vt-navy;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    background: transparent;
+
+    .list-inline-item { background: transparent; }
+  }
 
   @include media-breakpoint-up(lg) {
     .list-inline-item { font-size: 13px; }
