@@ -126,6 +126,16 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
   svg { fill: $rl-red; }
 
+  // phones: apex rotates the USPs in a 50px box — keep them to at most two short lines
+  @include media-breakpoint-down(lg) {
+    .list-inline-item {
+      font-size: 10.5px;
+      letter-spacing: .02em;
+      line-height: 1.25;
+      text-align: left;
+    }
+  }
+
   @include media-breakpoint-up(lg) {
     .list-inline-item { font-size: 13px; }
   }

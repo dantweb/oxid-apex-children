@@ -12,11 +12,34 @@ overrides only its header, its start page and a few new partials.
 
 The research behind these choices is in [docs/research.md](docs/research.md).
 
+## Screenshots
+
+Each theme has a screenshot gallery per device — `docs/screenshots/index.html` with sections (anchors)
+`#laptop` (1440 × 900), `#mobile-v` (phone portrait), `#mobile-h` (phone landscape) and `#mobile-folded-v`
+(foldable, folded, portrait): start page (full length), category page, product page, one-page checkout modal.
+
+| Theme | Gallery |
+|---|---|
+| `apex-child-1` · Redline | [apex-child-1/docs/screenshots/index.html](apex-child-1/docs/screenshots/index.html) |
+| `apex-child-2` · Voltage | [apex-child-2/docs/screenshots/index.html](apex-child-2/docs/screenshots/index.html) |
+| `apex-child-3` · Atelier | [apex-child-3/docs/screenshots/index.html](apex-child-3/docs/screenshots/index.html) |
+
+Re-create after theme changes (needs the theme active in a running shop with the one-page checkout):
+
+```bash
+npm i --no-save playwright && npx playwright install chromium
+[RESOLVE="MAP *.example.test 127.0.0.1"] node bin/screenshots.cjs apex-child-2/docs/screenshots \
+    electronics.example.test /Smartphones/ /Smartphones/Some-Product.html "apex-child-2 · Voltage" "Electronics shop"
+python3 bin/screenshot-gallery.py          # rebuilds every theme's index.html from screenshots.json
+```
+
 ## Layout
 
 ```
 themes/
 ├── bin/build.mjs              # builds CSS + copies fonts for every theme (or the ones named)
+├── bin/screenshots.cjs        # screenshots per device (Playwright) → apex-child-*/docs/screenshots/<device>/
+├── bin/screenshot-gallery.py  # builds apex-child-*/docs/screenshots/index.html
 ├── shared/scss/
 │   ├── _apex-stack.scss       # Bootstrap 5.2.3 + all apex partials (same order as apex/style.scss)
 │   └── _child-common.scss     # small helpers used by all three

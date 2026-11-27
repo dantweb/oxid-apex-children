@@ -1,0 +1,96 @@
+{
+  "theme": "apex-child-1 · Redline",
+  "shop": "Medical demo shop (mall vertical medical-devices)",
+  "url": "https://med.daniil.oxiddev.de/",
+  "taken": "2026-11-26",
+  "devices": [
+    {
+      "folder": "laptop",
+      "label": "Laptop · 1440 × 900",
+      "shots": [
+        {
+          "file": "01-start.jpg",
+          "caption": "Start page (full length)"
+        },
+        {
+          "file": "02-category.jpg",
+          "caption": "Category page /Diagnostik/"
+        },
+        {
+          "file": "03-product.jpg",
+          "caption": "Product detail page"
+        },
+        {
+          "file": "04-checkout-opc.jpg",
+          "caption": "One-page checkout modal after \"Jetzt kaufen\""
+        }
+      ]
+    },
+    {
+      "folder": "mobile-v",
+      "label": "Phone portrait · iPhone 14 (390 × 664)",
+      "shots": [
+        {
+          "file": "01-start.jpg",
+          "caption": "Start page (full length)"
+        },
+        {
+          "file": "02-category.jpg",
+          "caption": "Category page /Diagnostik/"
+        },
+        {
+          "file": "03-product.jpg",
+          "caption": "Product detail page"
+        },
+        {
+          "file": "04-checkout-opc.jpg",
+          "caption": "One-page checkout modal after \"Jetzt kaufen\""
+        }
+      ]
+    },
+    {
+      "folder": "mobile-h",
+      "label": "Phone landscape · iPhone 14 (750 × 340)",
+      "shots": [
+        {
+          "file": "01-start.jpg",
+          "caption": "Start page (full length)"
+        },
+        {
+          "file": "02-category.jpg",
+          "caption": "Category page /Diagnostik/"
+        },
+        {
+          "file": "03-product.jpg",
+          "caption": "Product detail page"
+        },
+        {
+          "file": "04-checkout-opc.jpg",
+          "caption": "One-page checkout modal after \"Jetzt kaufen\""
+        }
+      ]
+    },
+    {
+      "folder": "mobile-folded-v",
+      "label": "Foldable, folded, portrait · Galaxy Z Fold cover screen (344 × 882)",
+      "shots": [
+        {
+          "file": "01-start.jpg",
+          "caption": "Start page (full length)"
+        },
+        {
+          "file": "02-category.jpg",
+          "caption": "Category page /Diagnostik/"
+        },
+        {
+          "file": "03-product.jpg",
+          "caption": "Product detail page"
+        },
+        {
+          "file": "04-checkout-opc.jpg",
+          "caption": "One-page checkout modal after \"Jetzt kaufen\""
+        }
+      ]
+    }
+  ]
+}
